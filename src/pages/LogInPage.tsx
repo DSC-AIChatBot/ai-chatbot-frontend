@@ -1,4 +1,4 @@
-import React, { JSXElementConstructor } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -71,11 +71,11 @@ type Inputs = {
   exampleRequired: string,
 };
 
-function LogIn () : JSXElementConstructor {
+function LogIn() {
   const classes = useStyles();
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<Inputs>();
 
-  const onSubmit = (data: { email : string, password : string }) => console.log(data);
+  const onSubmit = (data: { email: string, password: string }) => console.log(data);
 
   return (
     <StyledLogIn>
@@ -118,7 +118,7 @@ function LogIn () : JSXElementConstructor {
         </Button>
       </Form>
       <SignUpLinkBtn to="/signUp">
-         회원가입ㄱㄱ
+        회원가입ㄱㄱ
       </SignUpLinkBtn>
     </StyledLogIn>
   );

@@ -19,7 +19,6 @@ function App() {
       <Route path="/consultCheckList" component={ConsultCheckList}/>
       <Route path="/counselingCenterConnect" component={CounselingCenterConnect}/>
     </Switch>
-
   );
 }
 

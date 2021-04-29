@@ -1,4 +1,4 @@
-import React, { useState, JSXElementConstructor } from 'react';
+import React, { useState } from 'react';
 
 import ChatMessage from '../components/ChatMessage';
 import styled from 'styled-components';
@@ -10,7 +10,7 @@ const ChatContainer = styled.div`
   height : 500px;
 `;
 
-function Main () : JSXElementConstructor {
+function Main () {
   const [message, setMessage] = useState("안녕하세요!");
   const [message1, setMessage1] = useState("상담 챗봇입니다.");
 
@@ -50,7 +50,7 @@ function Main () : JSXElementConstructor {
         />
       </div>
     </div>
-  )
+  );
 }
 
 export default Main;

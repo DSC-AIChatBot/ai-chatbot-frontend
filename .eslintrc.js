@@ -23,8 +23,9 @@ module.exports = {
   ],
   rules: {
     indent: ['error', 2],
-    'no-trailing-spaces': 'error',
+    semi: ["error", "always"],
     curly: 'error',
+    'no-trailing-spaces': 'error',
     'brace-style': 'error',
     'no-multi-spaces': 'error',
     'space-infix-ops': 'error',
@@ -44,5 +45,6 @@ module.exports = {
     'arrow-spacing': ['error', { before: true, after: true }],
     'react/prop-types': 'off',
     'linebreak-style': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 };
