@@ -22,6 +22,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'max-len': ["error", { "code": 100, "tabWidth": 4 }],
     indent: ['error', 2],
     semi: ["error", "always"],
     curly: 'error',
