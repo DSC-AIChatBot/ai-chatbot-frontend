@@ -16,7 +16,7 @@ declare module "react-router-dom" {
 }
 
 declare module 'react' {
-    export { useState }
+    export { useState, JSXElementConstructor }
 }
 declare module '@material-ui/core' {
     export { Button, useStyles }

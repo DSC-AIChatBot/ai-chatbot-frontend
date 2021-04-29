@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSXElementConstructor } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -71,11 +71,11 @@ type Inputs = {
   exampleRequired: string,
 };
 
-function LogIn () {
+function LogIn () : JSXElementConstructor {
   const classes = useStyles();
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<Inputs>();
 
-  const onSubmit = (data: Object) => console.log(data);
+  const onSubmit = (data: { email : string, password : string }) => console.log(data);
 
   return (
     <StyledLogIn>

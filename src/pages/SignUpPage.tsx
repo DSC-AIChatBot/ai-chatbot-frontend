@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSXElementConstructor } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 
@@ -55,10 +55,10 @@ type Inputs = {
   exampleRequired: string,
 };
 
-function SignUp () {
+function SignUp () :JSXElementConstructor {
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<Inputs>();
 
-  const onSubmit = (data: Object) => console.log(data);
+  const onSubmit = (data : { email : string, password : string}) => console.log(data);
 
   return (
     <StyledSignUp>
