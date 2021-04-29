@@ -12,12 +12,12 @@ declare module "react-hook-form" {
 }
 
 declare module "react-router-dom" {
-    export { BrowserRouter, Switch, Route, Link }
+    export { BrowserRouter, Switch, Route, Link };
 }
 
 declare module 'react' {
-    export { useState, JSXElementConstructor }
+    export { useState, JSXElementConstructor };
 }
 declare module '@material-ui/core' {
-    export { Button, useStyles }
+    export { Button, useStyles, StylesProvider };
 }
