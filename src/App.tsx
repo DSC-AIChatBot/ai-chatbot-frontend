@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { Switch, Route } from 'react-router-dom';
+
+import ConsultCheckList from './pages/ConsultingPage';
+import CounselingCenterConnect from './pages/CounselingConnectPage';
+import LogIn from './pages/LogInPage';
+import Main from './pages/MainPage';
+import RecordFeelSchedule from './pages/FeelCalendarPage';
+import SignUp from './pages/SignUpPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/" component={Main}/>
+      <Route path="/logIn" component={LogIn}/>
+      <Route path="/signUp" component={SignUp}/>
+      <Route path="/recordFeelSchedule" component={RecordFeelSchedule}/>
+      <Route path="/consultCheckList" component={ConsultCheckList}/>
+      <Route path="/counselingCenterConnect" component={CounselingCenterConnect}/>
+    </Switch>
+
   );
 }
 
