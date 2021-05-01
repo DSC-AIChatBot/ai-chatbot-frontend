@@ -10,7 +10,7 @@ type Props = {
 
 const styles: CSS.Properties = {
 
-}
+};
 
 const StyledContainer = styled.div`
     display : flex;
@@ -102,7 +102,7 @@ function ChatMessage({ mine = true, image, text } : Props) {
       </div>
     </StyledContainer>
 
-  )
+  );
 }
 
 export default ChatMessage;

@@ -8,6 +8,7 @@ import LogIn from './pages/LogInPage';
 import Main from './pages/MainPage';
 import RecordFeelSchedule from './pages/FeelCalendarPage';
 import SignUp from './pages/SignUpPage';
+import ApiTestPage from './pages/ApiTestPage';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       <Route path="/recordFeelSchedule" component={RecordFeelSchedule}/>
       <Route path="/consultCheckList" component={ConsultCheckList}/>
       <Route path="/counselingCenterConnect" component={CounselingCenterConnect}/>
+
+      {/* API Test Page */}
+      <Route path="/test" component={ApiTestPage}/>
     </Switch>
   );
 }
