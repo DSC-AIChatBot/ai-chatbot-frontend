@@ -13,9 +13,13 @@ function ApiTestPage():JSX.Element {
       <Button
         variant="contained"
         onClick={() => {
-          testGetReq().then((res) => {
-            console.log(res);
-          });
+          testGetReq()
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }}
       >
         API TEST Button
