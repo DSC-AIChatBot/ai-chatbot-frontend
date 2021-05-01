@@ -9,6 +9,7 @@ import Main from './pages/MainPage';
 import FeelCalendar from './pages/FeelCalendarPage';
 import SignUp from './pages/SignUpPage';
 import NotFound from './pages/NotFoundPage';
+import ApiTestPage from './pages/ApiTestPage';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
       <Route path="/consultCheckList" component={Consulting}/>
       <Route path="/counselingCenterConnect" component={CounselingConnect}/>
       <Route path="/notfound" component={NotFound}/>
+
+      {/* API Test Page */}
+      <Route path="/test" component={ApiTestPage}/>
     </Switch>
   );
 }
