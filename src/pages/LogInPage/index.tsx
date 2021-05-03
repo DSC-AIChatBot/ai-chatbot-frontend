@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useForm } from 'react-hook-form';
 import { Button } from '@material-ui/core';
+
 import {
   useStyles,
   StyledLogIn,
@@ -11,6 +12,8 @@ import {
   Input,
   SubmitBtn,
   SignUpLinkBtn,
+  Comments,
+  SignUpLinkContainer,
 } from './styles';
 
 type Inputs = {
@@ -58,9 +61,15 @@ function LogIn() {
           구글 로그인
         </Button>
       </Form>
-      <SignUpLinkBtn to="/signUp">
-        회원가입ㄱㄱ
-      </SignUpLinkBtn>
+
+      <SignUpLinkContainer>
+        <Comments>
+          아직 회원이 아니신가요?
+        </Comments>
+        <SignUpLinkBtn to="/signUp">
+        회원가입
+        </SignUpLinkBtn>
+      </SignUpLinkContainer>
     </StyledLogIn>
   );
 }

@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-import KakaoIcon from '../../assets/icon_kakao.svg';
-import GoogleIcon from '../../assets/icon_google.svg';
-import NaverIcon from '../../assets/icon_naver.svg';
+import KakaoIcon from '../assets/icon_kakao.svg';
+import GoogleIcon from '../assets/icon_google.svg';
+import NaverIcon from '../assets/icon_naver.svg';
 
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -109,6 +109,12 @@ export const SubmitBtn = styled.input`
   }
 `;
 
+export const SignUpLinkContainer = styled.div`
+  display : flex;
+  justify-content : space-around;
+  align-items : center;
+`;
+
 export const SignUpLinkBtn = styled(Link)`
   text-decoration : none;
   color : #000;
@@ -116,8 +122,15 @@ export const SignUpLinkBtn = styled(Link)`
   cursor: pointer;
   border-radius : 5px;
   background-color : #e5e5e5;
+  margin : 10px;
   &:hover {
     background-color : #F28316;
     color : #FFF;
   }
+`;
+
+export const Comments = styled.span`
+  font-size : 18px;
+  font-weight : 700;
+
 `;
