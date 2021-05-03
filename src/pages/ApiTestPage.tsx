@@ -4,7 +4,9 @@ import useAxios from 'axios-hooks';
 import React from 'react';
 
 function ApiTestPage():JSX.Element {
-  const [{ data: testGetData, loading: testGetLoading, error: testGetError }, testGetReq] = useAxios(
+  const [
+    { data: testGetData, loading: testGetLoading, error: testGetError },
+    testGetReq] = useAxios(
     'http://localhost:5000/api-test',
   );
 

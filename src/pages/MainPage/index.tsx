@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import ChatMessage from '../components/ChatMessage';
+import ChatMessage from '../../components/ChatMessage';
 import styled from 'styled-components';
 
 const ChatContainer = styled.div`
