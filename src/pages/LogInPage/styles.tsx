@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-import KakaoIcon from '../assets/icon_kakao.svg';
-import GoogleIcon from '../assets/icon_google.svg';
-import NaverIcon from '../assets/icon_naver.svg';
+import KakaoIcon from '../../assets/icon_kakao.svg';
+import GoogleIcon from '../../assets/icon_google.svg';
+import NaverIcon from '../../assets/icon_naver.svg';
 
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';

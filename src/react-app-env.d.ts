@@ -1,23 +1,23 @@
 /// <reference types="react-scripts" />
 
-declare module "styled-components" {
-    export default styled;
-}
-declare module "styled-components" {
-    export { createGlobalStyle, css };
-}
+// declare module "styled-components" {
+//     export default styled;
+// }
+// declare module "styled-components" {
+//     export { createGlobalStyle, css };
+// }
 
-declare module "react-hook-form" {
-    export { useForm };
-}
+// declare module "react-hook-form" {
+//     export { useForm };
+// }
 
-declare module "react-router-dom" {
-    export { BrowserRouter, Switch, Route, Link };
-}
+// declare module "react-router-dom" {
+//     export { BrowserRouter, Switch, Route, Link };
+// }
 
-declare module 'react' {
-    export { useState, JSXElementConstructor };
-}
-declare module '@material-ui/core' {
-    export { Button, useStyles, StylesProvider };
-}
+// declare module 'react' {
+//     export { useState, JSXElementConstructor };
+// }
+// declare module '@material-ui/core' {
+//     export { Grid, List, Button, useStyles, StylesProvider };
+// }
