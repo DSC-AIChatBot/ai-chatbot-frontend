@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import { List, Grid } from '@material-ui/core';
 function RecordFeelSchedule () {
-  const [getMoment, setMoment] = useState<string>(moment());
+  const [getMoment, setMoment] = useState<any>(moment().toString());
   const today = getMoment; // today==moment()
-  const firstWeek = useState<string>(today.clone().startOf('month').week());
-  const lastWeek = useState<string>(today.clone().endOf('month').week() === 1
+  const firstWeek = useState<any>(today.clone().startOf('month').week());
+  const lastWeek = useState<any>(today.clone().endOf('month').week() === 1
     ? 53 : today.clone().endOf('month').week());
 
   //const [week, setWeek]=useState<string>(firstWeek);
@@ -26,7 +26,7 @@ function RecordFeelSchedule () {
   };
 
   return (
-    <div className="App">
+    <Grid className="App">
       <div className="control">
         <button onClick={() => {
           setMoment(getMoment.clone().subtract(1, 'month')) //clone() 새로운 객체를 반환
@@ -41,7 +41,7 @@ function RecordFeelSchedule () {
       <table style={{ display: 'flex', width: 50, height: 50, flexDirection: 'column' }}>
         <tbody style={{ display: 'flex', flexDirection: 'column' }}>{makeCalendar()}</tbody>
       </table>
-    </div>
+    </Grid>
   );
 }
 
