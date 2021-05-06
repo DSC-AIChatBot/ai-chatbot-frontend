@@ -9,15 +9,16 @@ function FeelSchedule () {
 
   const [getMoment, setMoment] = useState<string>(moment().format('YYYYMMDD'));
   const [today, setToday] = useState<string>(getMoment); // today==moment()
-  const [firstWeek, setFirstWeek] = useState<number>(moment(getMoment).startOf('month').week());
-  const [lastWeek, setLastWeek] = useState<number>(moment(getMoment).endOf('month').week() === 1
-    ? 53 : moment(getMoment).endOf('month').week());
   let [result] = useState<JSX.Element[]>([]);
   const [test, setTest] = useState<JSX.Element[]>([]);
-  const dayArr = ["월", "화", "수", "목", "금", "토", "일"];
+
+  const dayArr = ["일", "월", "화", "수", "목", "금", "토"];
 
   const calendar = () => {
-    for (let i = firstWeek; i <= lastWeek;i = i + 1) {
+    const fWeek = moment(getMoment).startOf('month').week();
+    const lWeek = moment(getMoment).endOf('month').week() === 1
+      ? 53 : moment(getMoment).endOf('month').week();
+    for (let i = fWeek; i <= lWeek;i = i + 1) {
       console.log(i);
       result = result.concat(
         <tr key={i}>
@@ -39,6 +40,18 @@ function FeelSchedule () {
                 return (
                   <td key={index} style={{ backgroundColor: 'gray', border: 5 }} >
                     <span style={{ border: 5 }}>{days.format('D')}</span>
+                  </td>
+                );
+              } else if (days.day() === 0) {
+                return (
+                  <td key={index} style={{ backgroundColor: 'rgb(210,80, 80)' }} >
+                    <span>{days.format('D')}</span>
+                  </td>
+                );
+              } else if (days.day() === 6) {
+                return (
+                  <td key={index} style={{ backgroundColor: 'rgb(80,100, 200)' }} >
+                    <span>{days.format('D')}</span>
                   </td>
                 );
               } else {
@@ -68,21 +81,26 @@ function FeelSchedule () {
           ;
           console.log(getMoment);
         }}>이전달</button>
-        <span>{moment(getMoment).format('YYYY 년 MM 월')}</span>
+        <span style={{ fontSize: 30 }}>{moment(getMoment).format('YYYY 년 MM 월')}</span>
         <button onClick={() => {
           setMoment(moment(getMoment).add(1, 'month').format('YYYY-MM-DD'))
           ;
           console.log(getMoment);
         }}>다음달</button>
-        <button onClick={() => {
+
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center',
+
+      }}>
+        <button style={{ width: 80, height: 40 }}onClick={() => {
           calendar()
           ;
-        }}>달력 생성</button>
-      </div>
-      <List>
+        }}>달력 생성</button></div>
+
+      <List style={{ paddingLeft: 500 }}>
         {dayArr}
       </List>
-      <table style={{ height: 500, width: 500 }} >
+      <table style={{ height: 700, width: 1100 }} >
         <tbody className={classes.calendar}>{test}</tbody>
       </table>
     </div>
