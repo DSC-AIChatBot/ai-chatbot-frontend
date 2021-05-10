@@ -12,21 +12,20 @@ const ChatContainer = styled.div`
 
 function Main () {
   const [message, setMessage] = useState("안녕하세요!");
-  const [message1, setMessage1] = useState("상담 챗봇입니다.");
   const [chatList, setChatList] = useState([
     { role: "guest", text: "안녕" },
+    { role: "chatbot", text: "나는" },
+    { role: "guest", text: "게스트" },
+  ]);
+  const [chatList2, setChatList2] = useState([
+    { role: "chatbot", text: "안녕" },
     { role: "guest", text: "나는" },
-    { role: "guest", text: "로봇" },
+    { role: "chatbot", text: "로봇" },
   ]);
 
   function handleChange(e : any) {
     setMessage(e.target.value);
   }
-
-  function handleChange1(e : any) {
-    setMessage1(e.target.value);
-  }
-
 
   return (
     <div>
@@ -35,21 +34,21 @@ function Main () {
         {chatList.map(({ role, text }, index) => (
           <ChatMessage
             key={index}
-            mine={false}
+            role={role}
             image=""
             text={text}
           />
         ))}
-        <ChatMessage
-          mine={true}
-          image=""
-          text={message1}
-        />
+        {chatList2.map(({ role, text }, index) => (
+          <ChatMessage
+            key={index}
+            role={role}
+            image=""
+            text={text}
+          />
+        ))}
       </ChatContainer>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <input
-          onChange={handleChange1}
-        />
         <input
           onChange={handleChange}
         />
