@@ -1,16 +1,11 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import CSS from 'csstype';
+import styled from 'styled-components';
 
 type Props = {
     mine : boolean,
     image : string,
     text : string
 }
-
-const styles: CSS.Properties = {
-
-};
 
 const StyledContainer = styled.div`
     display : flex;
