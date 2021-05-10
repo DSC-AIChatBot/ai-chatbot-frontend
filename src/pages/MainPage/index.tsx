@@ -13,6 +13,11 @@ const ChatContainer = styled.div`
 function Main () {
   const [message, setMessage] = useState("안녕하세요!");
   const [message1, setMessage1] = useState("상담 챗봇입니다.");
+  const [chatList, setChatList] = useState([
+    { role: "guest", text: "안녕" },
+    { role: "guest", text: "나는" },
+    { role: "guest", text: "로봇" },
+  ]);
 
   function handleChange(e : any) {
     setMessage(e.target.value);
@@ -22,21 +27,21 @@ function Main () {
     setMessage1(e.target.value);
   }
 
-  const chatList = [];
 
   return (
     <div>
       메인 페이지
-      {/* <MessageBubble color="#F28316"/> */}
       <ChatContainer>
-        <ChatMessage
-          mine={false}
-          image=""
-          text={message}
-        />
+        {chatList.map(({ role, text }, index) => (
+          <ChatMessage
+            key={index}
+            mine={false}
+            image=""
+            text={text}
+          />
+        ))}
         <ChatMessage
           mine={true}
-          // image="https://picsum.photos/200/300"
           image=""
           text={message1}
         />

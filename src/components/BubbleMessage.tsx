@@ -18,7 +18,7 @@ function MessageBubble ({ color } : Props) {
         fill={color}
       />
     </svg>
-  )
-};
+  );
+}
 
 export default MessageBubble;

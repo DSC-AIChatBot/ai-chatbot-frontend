@@ -21,7 +21,6 @@ function App() {
       <Route path="/consultCheckList" component={Consulting}/>
       <Route path="/counselingCenterConnect" component={CounselingConnect}/>
       <Route path="/notfound" component={NotFound}/>
-
       {/* API Test Page */}
       <Route path="/test" component={ApiTestPage}/>
     </Switch>
