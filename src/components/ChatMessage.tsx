@@ -48,7 +48,7 @@ const StyledContainer = styled.div`
 `;
 
 const MessageContainer = styled.div`
-  max-width : 250px;
+  max-width : 25vw;
   padding : 10px;
   padding-top : 5px;
   padding-bottom : 7px;
@@ -57,8 +57,8 @@ const MessageContainer = styled.div`
 `;
 
 const MessageImage = styled.img`
-  width : 200px;
-  height : 150px;
+  width : 20vw;
+  height : 15vh;
   align-self : ${(props : MessageImageProps) => props.alignSelf};
 `;
 

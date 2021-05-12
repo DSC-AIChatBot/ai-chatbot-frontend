@@ -3,11 +3,32 @@ import React, { useState } from 'react';
 import ChatMessage from '../../components/ChatMessage';
 import styled from 'styled-components';
 
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border : 1px solid #e5e5e5;
+  padding : 5%;
+  width : 50vw;
+  height : 50vh;
+  justify-content : space-between;
+`;
+
 const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width : 500px;
-  height : 500px;
+`;
+
+const InputContainer = styled.div`
+  border : 1px solid #e5e5e5;
+  width : 100%;
+  padding : 10px;
+`;
+
+const Input = styled.input`
+  outline: none;
+  border : none;
+  width : 100%;
+  font-size : 16px;
 `;
 
 function Main () {
@@ -28,8 +49,8 @@ function Main () {
   }
 
   return (
-    <div>
-      메인 페이지
+    <MainContainer>
+
       <ChatContainer>
         {chatList.map(({ role, text }, index) => (
           <ChatMessage
@@ -48,12 +69,12 @@ function Main () {
           />
         ))}
       </ChatContainer>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <input
+      <InputContainer style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Input
           onChange={handleChange}
         />
-      </div>
-    </div>
+      </InputContainer>
+    </MainContainer>
   );
 }
 
