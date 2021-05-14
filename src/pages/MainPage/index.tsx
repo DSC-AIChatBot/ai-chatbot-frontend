@@ -3,53 +3,78 @@ import React, { useState } from 'react';
 import ChatMessage from '../../components/ChatMessage';
 import styled from 'styled-components';
 
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border : 1px solid #e5e5e5;
+  padding : 5%;
+  width : 50vw;
+  height : 50vh;
+  justify-content : space-between;
+`;
+
 const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width : 500px;
-  height : 500px;
+`;
+
+const InputContainer = styled.div`
+  border : 1px solid #e5e5e5;
+  width : 100%;
+  padding : 10px;
+`;
+
+const Input = styled.input`
+  outline: none;
+  border : none;
+  width : 100%;
+  font-size : 16px;
 `;
 
 function Main () {
   const [message, setMessage] = useState("안녕하세요!");
-  const [message1, setMessage1] = useState("상담 챗봇입니다.");
+  const [chatList, setChatList] = useState([
+    { role: "guest", text: "안녕" },
+    { role: "chatbot", text: "나는" },
+    { role: "guest", text: "게스트" },
+  ]);
+  const [chatList2, setChatList2] = useState([
+    { role: "chatbot", text: "안녕" },
+    { role: "guest", text: "나는" },
+    { role: "chatbot", text: "로봇" },
+  ]);
 
   function handleChange(e : any) {
     setMessage(e.target.value);
   }
 
-  function handleChange1(e : any) {
-    setMessage1(e.target.value);
-  }
-
-  const chatList = [];
-
   return (
-    <div>
-      메인 페이지
-      {/* <MessageBubble color="#F28316"/> */}
+    <MainContainer>
+
       <ChatContainer>
-        <ChatMessage
-          mine={false}
-          image=""
-          text={message}
-        />
-        <ChatMessage
-          mine={true}
-          // image="https://picsum.photos/200/300"
-          image=""
-          text={message1}
-        />
+        {chatList.map(({ role, text }, index) => (
+          <ChatMessage
+            key={index}
+            role={role}
+            image=""
+            text={text}
+          />
+        ))}
+        {chatList2.map(({ role, text }, index) => (
+          <ChatMessage
+            key={index}
+            role={role}
+            image=""
+            text={text}
+          />
+        ))}
       </ChatContainer>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <input
-          onChange={handleChange1}
-        />
-        <input
+      <InputContainer style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Input
           onChange={handleChange}
         />
-      </div>
-    </div>
+      </InputContainer>
+    </MainContainer>
   );
 }
 

@@ -1,7 +1,7 @@
+import React from 'react';
 import { Button } from '@material-ui/core';
 import useAxios from 'axios-hooks';
 
-import React from 'react';
 
 function ApiTestPage():JSX.Element {
   const [

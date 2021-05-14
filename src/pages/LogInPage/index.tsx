@@ -57,7 +57,12 @@ function LogIn() {
         <Button variant="contained" component="button" className={classes.naverLogin}>
           네이버 로그인
         </Button>
-        <Button variant="contained" component="button" className={classes.googleLogin}>
+        <Button
+          variant="contained"
+          component="button"
+          className={classes.googleLogin}
+          href="http://localhost:5000/auth/login/google"
+        >
           구글 로그인
         </Button>
       </Form>
