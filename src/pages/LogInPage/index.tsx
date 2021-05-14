@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { useForm } from 'react-hook-form';
-import { Button } from '@material-ui/core';
+import { Button, Grid, Fade, Typography, TextField } from '@material-ui/core';
+
+import LoginPageBackgroundImage from '../../assets/login-page/login-page-background.jpeg';
 
 import {
   useStyles,
@@ -21,14 +23,54 @@ type Inputs = {
   exampleRequired: string,
 };
 
-function LogIn() {
+function LoginPage():JSX.Element {
   const classes = useStyles();
   const { register, handleSubmit } = useForm<Inputs>();
 
   const onSubmit = (data: { email: string, password: string }) => console.log(data);
 
   return (
-    <StyledLogIn>
+    <Fade in timeout={
+      { enter: 2000 }
+    }>
+      <Grid
+        container
+        style={{
+          background: `url(${LoginPageBackgroundImage})`,
+          width: window.innerWidth,
+          height: window.innerHeight,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+        }}
+        alignItems="center"
+        justify="flex-end"
+      >
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{
+            width: 500,
+            height: 'fit-content',
+          }}
+        >
+          <Typography variant="h2">
+            Login
+          </Typography>
+
+          <TextField variant="outlined">
+
+          </TextField>
+        </Grid>
+      </Grid>
+    </Fade>
+  );
+}
+
+export default LoginPage;
+{ /* <StyledLogIn>
       <Title>로그인</Title>
       <Form
         onSubmit={handleSubmit(onSubmit)}
@@ -75,8 +117,4 @@ function LogIn() {
         회원가입
         </SignUpLinkBtn>
       </SignUpLinkContainer>
-    </StyledLogIn>
-  );
-}
-
-export default LogIn;
+    </StyledLogIn> */ }
