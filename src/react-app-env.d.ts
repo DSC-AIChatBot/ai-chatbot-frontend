@@ -7,9 +7,26 @@
 //     export { createGlobalStyle, css };
 // }
 
-// declare module "react-hook-form" {
-//     export { useForm };
+// // declare module "react-hook-form" {
+// //     export { useForm };
+// // }
+
+// <<<<<<< HEAD
+// declare module "react-router-dom" {
+//     export { BrowserRouter, Switch, Route, Link };
 // }
+
+// // declare module 'react' {
+// //     export { useState, JSXElementConstructor };
+// // }
+// // declare module '@material-ui/core' {
+// //     export { Grid, List, Button, useStyles, StylesProvider };
+// // }
+// =======
+// <<<<<<< HEAD
+// // declare module "react-router-dom" {
+// //     export { BrowserRouter, Switch, Route, Link };
+// // }
 
 // declare module "react-router-dom" {
 //     export { BrowserRouter, Switch, Route, Link };
@@ -19,5 +36,5 @@
 //     export { useState, JSXElementConstructor };
 // }
 // declare module '@material-ui/core' {
-//     export { Button, useStyles };
+//     export { Button, useStyles, StylesProvider };
 // }
