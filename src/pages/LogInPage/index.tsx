@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useForm } from 'react-hook-form';
-import { Button, Grid, Fade, Typography, TextField } from '@material-ui/core';
+import { Button, Grid, Fade, Typography, TextField, Switch } from '@material-ui/core';
 
 import LoginPageBackgroundImage from '../../assets/login-page/login-page-background.jpeg';
 
@@ -51,18 +51,57 @@ function LoginPage():JSX.Element {
           direction="column"
           alignItems="center"
           justify="center"
-          style={{
-            width: 500,
-            height: 'fit-content',
-          }}
+          className={classes.container}
         >
-          <Typography variant="h2">
+          <Typography variant="h2" style={{
+          }}>
             Login
           </Typography>
 
-          <TextField variant="outlined">
+          <TextField variant="outlined" label="ID"
+            style={{
+              width: 250,
+              marginTop: 48,
+            }}
+          />
 
-          </TextField>
+          <TextField variant="outlined" label="PW"
+            style={{
+              width: 250,
+              marginTop: 8,
+              marginBottom: 48,
+            }}
+          />
+
+          <Button variant="contained" component="button" className={classes.kakaoLogin}>
+            <Typography
+              style={{
+              }}
+            >
+              카카오 로그인
+            </Typography>
+          </Button>
+          <Button variant="contained" component="button" className={classes.naverLogin}>
+            <Typography
+              style={{
+              }}
+            >
+              네이버 로그인
+            </Typography>
+          </Button>
+          <Button
+            variant="contained"
+            component="button"
+            className={classes.googleLogin}
+            href="http://localhost:5000/auth/login/google"
+          >
+            <Typography
+              style={{
+              }}
+            >
+              구글 로그인
+            </Typography>
+          </Button>
         </Grid>
       </Grid>
     </Fade>
