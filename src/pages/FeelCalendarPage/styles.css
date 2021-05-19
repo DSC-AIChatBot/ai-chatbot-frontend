@@ -1,0 +1,18 @@
+.day.hover {
+  display: contents;
+}
+
+.triangle {
+  display: inline;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 30px;
+}
+
+.triangle.test_3 {
+  border-color: #ffffff #0a0601 #ffffff #ffffff;
+}
+.triangle.test_4 {
+  border-color: #ffffff #ffffff #ffffff #0f0902;
+}
