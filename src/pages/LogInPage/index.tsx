@@ -1,7 +1,5 @@
 import React from 'react';
-
-import { useForm } from 'react-hook-form';
-import { Button, Grid, Fade, Typography, TextField, Switch, IconButton } from '@material-ui/core';
+import { Button, Grid, Fade, Typography, TextField, IconButton } from '@material-ui/core';
 
 import LoginPageBackgroundImage from '../../assets/login-page/login-page-background.jpeg';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
