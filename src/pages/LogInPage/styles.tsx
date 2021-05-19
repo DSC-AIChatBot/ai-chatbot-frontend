@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 export const useStyles = makeStyles((theme: Theme) => ({
   container: {
     boxShadow: theme.shadows[20],
-
   },
   imageContainer: {
     width: 850,
