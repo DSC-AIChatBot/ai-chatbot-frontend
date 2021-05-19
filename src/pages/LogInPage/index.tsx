@@ -11,11 +11,6 @@ import {
 } from './styles';
 import useEventTargetValue from '../../utils/hooks/useEventTargetValue';
 
-type Inputs = {
-  example: string,
-  exampleRequired: string,
-};
-
 function LoginPage():JSX.Element {
   const classes = useStyles();
   const id = useEventTargetValue('');
