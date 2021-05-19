@@ -9,13 +9,18 @@ import { Link } from 'react-router-dom';
 
 export const useStyles = makeStyles((theme: Theme) => ({
   container: {
+    boxShadow: theme.shadows[20],
+
+  },
+  imageContainer: {
+    width: 850,
+    height: 700,
+  },
+  loginContainer: {
     width: 400,
-    height: 'fit-content',
+    height: 700,
     backgroundColor: 'white',
-    borderRadius: 16,
     padding: 48,
-    marginRight: 128,
-    boxShadow: theme.shadows[10],
   },
   kakaoLogin: {
     backgroundColor: 'rgba(253, 216, 1, 0.6)',
