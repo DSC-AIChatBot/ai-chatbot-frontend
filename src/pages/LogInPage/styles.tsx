@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 
 import KakaoIcon from '../../assets/icon_kakao.svg';
 import GoogleIcon from '../../assets/icon_google.svg';
@@ -7,9 +7,24 @@ import NaverIcon from '../../assets/icon_naver.svg';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    boxShadow: theme.shadows[20],
+
+  },
+  imageContainer: {
+    width: 850,
+    height: 700,
+  },
+  loginContainer: {
+    width: 400,
+    height: 700,
+    backgroundColor: 'white',
+    padding: 48,
+  },
   kakaoLogin: {
     backgroundColor: 'rgba(253, 216, 1, 0.6)',
+    width: 250,
     '&:before': {
       content: "''",
       width: 21,
@@ -27,6 +42,7 @@ export const useStyles = makeStyles(() => ({
   },
   naverLogin: {
     backgroundColor: 'rgba(45, 190, 83, 0.6)',
+    width: 250, marginTop: 8,
     '&:before': {
       content: "''",
       width: 19,
@@ -43,20 +59,22 @@ export const useStyles = makeStyles(() => ({
     },
   },
   googleLogin: {
-    backgroundColor: 'rgba(171, 201, 255, 0.6)',
+    backgroundColor: '#fff',
+    width: 250,
+    marginTop: 8,
     '&:before': {
       content: "''",
-      width: 18,
-      height: 18,
+      width: 19,
+      height: 19,
       background: `url(${GoogleIcon})`,
       backgroundSize: '100% 100%',
     },
     '&:after': {
       content: "''",
-      width: 18,
+      width: 19,
     },
     '&:hover': {
-      backgroundColor: 'rgba(171, 201, 255)',
+      backgroundColor: '#f1f3f5',
     },
   },
 }));
