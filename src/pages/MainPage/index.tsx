@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 import ChatMessage from '../../components/ChatMessage';
 import styled from 'styled-components';
+import useAxios from 'axios-hooks';
+
+import { Button } from '@material-ui/core';
 
 const MainContainer = styled.div`
   display: flex;
@@ -48,8 +51,23 @@ function Main () {
     setMessage(e.target.value);
   }
 
+  const [, useProfileReq] = useAxios({
+    method: 'GET',
+    url: 'auth/profile',
+  });
+
   return (
     <MainContainer>
+      <Button onClick={() => {
+        useProfileReq()
+          .then((res) => {
+            console.log(res.data);
+          }).catch((err) => {
+            console.log(err);
+          });
+      }}>
+        Profile
+      </Button>
 
       <ChatContainer>
         {chatList.map(({ role, text }, index) => (

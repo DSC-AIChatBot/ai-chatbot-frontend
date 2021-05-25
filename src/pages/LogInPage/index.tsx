@@ -9,6 +9,7 @@ import {
 } from './styles';
 import useEventTargetValue from '../../utils/hooks/useEventTargetValue';
 
+
 function LoginPage():JSX.Element {
   const classes = useStyles();
   const id = useEventTargetValue('');
@@ -39,6 +40,7 @@ function LoginPage():JSX.Element {
               }}
             />
           </Grid>
+
           <Grid
             item
             container
@@ -101,7 +103,12 @@ function LoginPage():JSX.Element {
               </IconButton>
             </Grid>
 
-            <Button variant="contained" component="button" className={classes.kakaoLogin}>
+            <Button
+              variant="contained"
+              component="button"
+              className={classes.kakaoLogin}
+              href="http://localhost:5000/auth/login/kakao"
+            >
               <Typography
                 style={{
                 }}
@@ -109,6 +116,7 @@ function LoginPage():JSX.Element {
                 카카오 로그인
               </Typography>
             </Button>
+
             <Button variant="contained" component="button" className={classes.naverLogin}
               href="http://localhost:5000/auth/login/naver"
             >
@@ -119,6 +127,7 @@ function LoginPage():JSX.Element {
                 네이버 로그인
               </Typography>
             </Button>
+
             <Button
               variant="contained"
               component="button"
