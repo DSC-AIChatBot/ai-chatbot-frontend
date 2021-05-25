@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Grid, Fade, Typography, TextField, IconButton } from '@material-ui/core';
+import { Button, Grid, Fade,
+  Typography, TextField, IconButton, FormControlLabel, Switch,
+} from '@material-ui/core';
 
 import LoginPageBackgroundImage from '../../assets/login-page/login-page-background.jpeg';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
@@ -80,7 +82,7 @@ function LoginPage():JSX.Element {
               item
               container
               style={{
-                marginBottom: 48,
+                marginBottom: 8,
                 width: 250,
               }}>
 
@@ -102,6 +104,18 @@ function LoginPage():JSX.Element {
                 <VpnKeyIcon/>
               </IconButton>
             </Grid>
+
+            <FormControlLabel
+              control={
+                <Switch
+                  // checked={state.checkedB}
+                  // onChange={handleChange}
+                  name="checkedB"
+                  color="primary"
+                />
+              }
+              label="로그인 유지"
+            />
 
             <Button
               variant="contained"

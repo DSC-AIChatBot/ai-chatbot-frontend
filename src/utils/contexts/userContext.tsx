@@ -41,7 +41,7 @@ export function useUser(): UserContextValue {
 
   React.useEffect(() => {
     if (!user.id) {
-      console.log('[UserContext] null user');
+      console.log('[UserContext] NULL - get Profile');
       getUserProfile()
         .then((res) => {
           if (res.data) {

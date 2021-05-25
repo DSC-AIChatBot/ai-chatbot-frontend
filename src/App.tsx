@@ -30,6 +30,7 @@ function App() {
     >
       {status ? (
         <Switch>
+          {/* 로그인 상태인 경우 */}
           <Route exact path="/" component={Main}/>
           <Route path="/signUp" component={SignUp}/>
           <Route path="/recordFeelSchedule" component={FeelCalendar}/>
@@ -39,6 +40,7 @@ function App() {
           <Route path="/test" component={ApiTestPage}/>
         </Switch>) : (
         <Switch>
+          {/* 로그아웃 상태인 경우 */}
           <Route path="/" component={LogIn}/>
         </Switch>
       )}
