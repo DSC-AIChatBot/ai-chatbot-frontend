@@ -113,10 +113,7 @@ function LoginPage():JSX.Element {
                 카카오 로그인
               </Typography>
             </Button>
-            <Button
-              variant="contained"
-              component="button"
-              className={classes.googleLogin}
+            <Button variant="contained" component="button" className={classes.naverLogin}
               href="http://localhost:5000/auth/login/naver"
             >
               <Typography

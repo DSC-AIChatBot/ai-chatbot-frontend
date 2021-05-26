@@ -17,6 +17,7 @@ import Alert from '@material-ui/lab/Alert';
 import ChatMessage from '../../components/ChatMessage';
 // import { BackGround } from './styles';
 import background from "./image.jpg";
+import MainPage from './MainPage';
 
 
 function Main () {
@@ -38,8 +39,9 @@ function Main () {
     { role: "guest", text: "나는" },
     { role: "chatbot", text: "게스트" },
   ]);
+}
 
-
+function MainPageContainer () {
   return (
     <Box mt={10}>
       <Grid
@@ -58,7 +60,7 @@ function Main () {
         <Grid item xs={5}>
           <Paper>
             <Typography>
-              emotion log
+              <MainPage/>
             </Typography>
           </Paper>
         </Grid>
@@ -111,4 +113,4 @@ function Main () {
   );
 }
 
-export default Main;
+export default MainPageContainer;
