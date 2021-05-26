@@ -100,7 +100,11 @@ function LoginPage():JSX.Element {
                 <VpnKeyIcon/>
               </IconButton>
             </Grid>
-
+            <Button variant="contained" component="button">
+              <Typography>
+                카카오 로그인
+              </Typography>
+            </Button>
             <Button variant="contained" component="button" className={classes.kakaoLogin}>
               <Typography
                 style={{
@@ -109,7 +113,12 @@ function LoginPage():JSX.Element {
                 카카오 로그인
               </Typography>
             </Button>
-            <Button variant="contained" component="button" className={classes.naverLogin}>
+            <Button
+              variant="contained"
+              component="button"
+              className={classes.googleLogin}
+              href="http://localhost:5000/auth/login/naver"
+            >
               <Typography
                 style={{
                 }}
