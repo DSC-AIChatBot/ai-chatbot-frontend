@@ -6,8 +6,9 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     alignTtems: 'center',
-    height: 700,
-    width: 1200,
+    //justifyContent: 'center',
+    height: 755,
+    width: 875,
     //padding: 100,
   },
   plusButton: {
@@ -17,5 +18,13 @@ export const useStyles = makeStyles(() => ({
   todayButton: {
     borderRadius: 10,
     backgroundColor: 'red',
+  },
+  testModal: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignTtems: 'center',
+    position: 'fixed',
+    width: 200,
+    height: 150,
   },
 }));

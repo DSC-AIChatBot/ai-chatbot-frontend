@@ -54,7 +54,11 @@ function LogIn() {
         <Button variant="contained" component="button" className={classes.kakaoLogin}>
           <span>카카오 로그인</span>
         </Button>
-        <Button variant="contained" component="button" className={classes.naverLogin}>
+        <Button
+          variant="contained"
+          component="button"
+          className={classes.naverLogin}
+          href="http://localhost:5000/auth/login/naver">
           네이버 로그인
         </Button>
         <Button
