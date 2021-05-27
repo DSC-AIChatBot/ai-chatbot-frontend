@@ -101,7 +101,9 @@ function LoginPage():JSX.Element {
               </IconButton>
             </Grid>
 
-            <Button variant="contained" component="button" className={classes.kakaoLogin}>
+            <Button variant="contained" component="button" className={classes.kakaoLogin}
+              href="http://localhost:5000/auth/login/kakao"
+            >
               <Typography
                 style={{
                 }}
