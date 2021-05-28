@@ -51,62 +51,63 @@ function MainPageContainer () {
         alignItems="stretch"
       >
         <Grid item xs={2}>
-          <Paper>
+          {/* <Paper>
             <Typography>
               emotion log
             </Typography>
-          </Paper>
+          </Paper> */}
         </Grid>
-        <Grid item xs={5}>
-          <Paper>
+        <Grid item xs={7}>
+          <Paper elevation={0}>
             <Typography>
               <MainPage/>
             </Typography>
           </Paper>
         </Grid>
         <Grid item xs={2}>
-          <Grid
-            container
-            spacing={1}
-            direction="column"
-            justify="flex-start"
-          >
-            <Grid item xs={12}>
-              {/* <AppBar
-                position="static"
-                style={{
-                  borderRadius: "2px",
-                  backgroundColor: "#1976d2",
-                }}>
-                <Toolbar>
-                  <Typography variant="h5">
-                    Today Emotion
-                  </Typography>
-                </Toolbar>
-              </AppBar> */}
-              <Typography
-                variant="h5"
-                style={{
-                  fontStyle: "italic",
-                  fontWeight: "bold",
-                }}>
-                EMOTION CHECK
-              </Typography>
+          <Box mt={25}>
+            <Grid
+              container
+              spacing={1}
+              direction="column"
+              justify="flex-start"
+            >
+              <Grid item xs={12}>
+                {/* <AppBar
+                  position="static"
+                  style={{
+                    borderRadius: "2px",
+                    backgroundColor: "#1976d2",
+                  }}>
+                  <Toolbar>
+                    <Typography variant="h5">
+                      Today Emotion
+                    </Typography>
+                  </Toolbar>
+                </AppBar> */}
+                <Typography
+                  variant="h5"
+                  style={{
+                    fontStyle: "italic",
+                    fontWeight: "bold",
+                  }}>
+                  EMOTION CHECK
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Alert icon={false} severity="error"> 오늘 화나는 일이 있었군요</Alert>
+              </Grid>
+              <Grid item>
+                <Alert icon={false} severity="warning"> 누군가를 걱정하구 있네요</Alert>
+              </Grid>
+              <Grid item>
+                <Alert icon={false} severity="info"> 오늘 슬픈 일이 있었군요 </Alert>
+              </Grid>
+              <Grid item>
+                <Alert icon={false} severity="success">오늘 기쁜 일이 있었군요</Alert>
+              </Grid>
             </Grid>
-            
-            <Grid item>
-              <Alert icon={false} severity="error"> 오늘 화나는 일이 있었군요</Alert>
-            </Grid>
-            <Grid item>
-              <Alert icon={false} severity="warning"> 누군가를 걱정하구 있네요</Alert>
-            </Grid>
-            <Grid item>
-              <Alert icon={false} severity="info"> 오늘 슬픈 일이 있었군요 </Alert>
-            </Grid>
-            <Grid item>
-              <Alert icon={false} severity="success">오늘 기쁜 일이 있었군요</Alert>
-            </Grid>
-          </Grid>
+          </Box>
         </Grid>
       </Grid>
     </Box>

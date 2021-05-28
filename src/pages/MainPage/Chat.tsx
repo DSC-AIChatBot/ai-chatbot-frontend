@@ -18,6 +18,7 @@ const MainContainer = styled.div`
   width : 50vw;
   height : 50vh;
   justify-content : space-between;
+  border-radius : 10px;
 `;
 
 const StyledChatContainer = styled.div`
