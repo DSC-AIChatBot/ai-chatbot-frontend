@@ -7,51 +7,78 @@ import {
   useMutation,
   gql,
 } from "@apollo/client";
-
+// subscription 사용 gql
 const GET_MESSAGES = gql`
-  subscription {
-    messages {
-      id
-      content
-      user
+  subscription subscribe {
+    subscribeMessage {
+      messages {
+        id
+        content
+        role
+      }
     }
   }
 `;
 
+// post message mutation query ( role ,content )
 const POST_MESSAGE = gql`
-  mutation($user: String!, $content: String!) {
-    postMessage(user: $user, content: $content)
+  mutation($role: String!, $content: String!) {
+    postMessage(role: $role, content: $content) {
+      id
+    }
   }
 `;
 
 // Business Logic container
 function ChatContainer () {
-  const { data } = useSubscription(GET_MESSAGES);
-  const [message, setMessage] = useState("안녕하세요!");
+  const { data, loading, error } = useSubscription(GET_MESSAGES);
+  const [message, setMessage] = useState({
+    role: "user",
+    content: "",
+  });
 
-  const [chatList, setChatList] = useState([
-    { role: "guest", text: "안녕" },
-    { role: "chatbot", text: "나는" },
-    { role: "guest", text: "게스트" },
-  ]);
+  const [messages] = useState(data ? data : []);
 
-  const [chatList2, setChatList2] = useState([
-    { role: "chatbot", text: "안녕" },
-    { role: "guest", text: "나는" },
-    { role: "chatbot", text: "로봇" },
-  ]);
+  // use Mutation
+  const [postMessage] = useMutation(POST_MESSAGE);
 
-  function handleChange(e : React.FormEvent<HTMLInputElement>) {
-    setMessage(e.currentTarget.value);
+  const onSend = () => {
+    if (message.content.length > 0) {
+      postMessage({
+        variables: message,
+      });
+    }
+    setMessage({
+      ...message,
+      content: "",
+    });
+  };
+
+  function handleChange(e : { target: HTMLInputElement }) {
+    setMessage({
+      ...message,
+      content: e.target.value,
+    });
   }
 
-  return (
-    <Chat
-      chatList={chatList}
-      chatList2={chatList2}
-      onChange={handleChange}
-    />
-  );
+  function handleOnKeyUp (e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.code === "Enter") {
+      onSend();
+    }
+  }
+
+  if (!loading) {
+    return (
+      <Chat
+        message={message}
+        messages={messages}
+        onChange={handleChange}
+        onKeyUp={handleOnKeyUp}
+      />
+    );
+  }
+
+  return null;
 }
 
 export default ChatContainer;

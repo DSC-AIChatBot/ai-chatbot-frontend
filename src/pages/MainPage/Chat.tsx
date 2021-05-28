@@ -42,44 +42,39 @@ const StyledImage = styled.img`
   max-width: 200px;
 `;
 
-type onChangeFunction = (e: React.FormEvent<HTMLInputElement>) => void;
+type onChangeFunction = (e : { target: HTMLInputElement }) => void;
+
+type onKeyUpFunction = (e : React.KeyboardEvent<HTMLInputElement>) => void;
 
 type Props = {
-    chatList : { role : string, text : string }[],
-    chatList2 : { role : string, text : string }[],
+    message : { role : string, content : string }
+    messages : { role : string, content : string }[]
     onChange : onChangeFunction,
+    onKeyUp : onKeyUpFunction,
 }
 
-function Chat ({ chatList, chatList2, onChange } : Props) {
+function Chat ({ message: messageInput, messages, onChange, onKeyUp } : Props) {
   return (
     <MainChatContainer>
       <StyledImage src={ChatBot}/>
       <MainContainer>
         <StyledChatContainer>
-          {chatList.map((
-            { role, text } : { role : string, text : string}, index : number,
+          {messages.map((
+            { role, content } : { role : string, content : string}, index : number,
           ) => (
             <ChatMessage
               key={index}
               role={role}
               image=""
-              text={text}
-            />
-          ))}
-          {chatList2.map((
-            { role, text } : { role : string, text : string}, index : number,
-          ) => (
-            <ChatMessage
-              key={index}
-              role={role}
-              image=""
-              text={text}
+              content={content}
             />
           ))}
         </StyledChatContainer>
         <InputContainer style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Input
+            value={messageInput.content}
             onChange={onChange}
+            onKeyUp={onKeyUp}
           />
         </InputContainer>
       </MainContainer>

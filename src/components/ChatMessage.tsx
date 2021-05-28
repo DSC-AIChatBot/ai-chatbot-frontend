@@ -4,7 +4,7 @@ import styled from 'styled-components';
 type Props = {
     role : string,
     image : string,
-    text : string
+    content : string
 }
 
 type StyledContainerProps = {
@@ -93,7 +93,7 @@ const BubbleStyledPath = styled.path`
   fill : ${(props : BubbleStyledPathProps) => props.fill};
 `;
 
-function ChatMessage({ role, image, text } : Props) {
+function ChatMessage({ role, image, content } : Props) {
 
   if (role === "guest") {
     return (
@@ -116,12 +116,12 @@ function ChatMessage({ role, image, text } : Props) {
               : null
           }
           {
-            text
+            content
               ? (
                 <MessageText
                   color="#000"
                 >
-                  {text}
+                  {content}
                 </MessageText>
               )
               : null
@@ -167,12 +167,12 @@ function ChatMessage({ role, image, text } : Props) {
             : null
         }
         {
-          text
+          content
             ? (
               <MessageText
                 color="#FFF"
               >
-                {text}
+                {content}
               </MessageText>
             )
             : null
