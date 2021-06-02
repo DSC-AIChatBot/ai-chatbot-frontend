@@ -2,46 +2,53 @@ import React from 'react';
 
 import ChatMessage from '../../components/ChatMessage';
 import styled from 'styled-components';
-import ChatBot from './ChatBot.jpg';
+// import ChatBot from './ChatBot.jpg';
+import {
+  Box,
+} from '@material-ui/core';
+// import { makeStyles, Theme } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
-const MainChatContainer = styled.div`
-  display : flex;
-  flex-direction: column;
-  align-items: center;
-`;
+// const MainChatContainer = styled.div`
+//   display : flex;
+//   flex-direction: column;
+//   align-items: center;
+// `;
 
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   border : 1px solid #e5e5e5;
   padding : 5%;
-  width : 50vw;
-  height : 50vh;
+  width : 80%;
+  height : 70vh;
   justify-content : space-between;
   border-radius : 10px;
+  background-color: rgba(116,116,130,0.8);
 `;
+// background-color: rgba(187,155,168,0.8);
 
 const StyledChatContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const InputContainer = styled.div`
-  border : 1px solid #e5e5e5;
-  width : 100%;
-  padding : 10px;
-`;
+// const InputContainer = styled.div`
+//   border : 1px solid #e5e5e5;
+//   width : 100%;
+//   padding : 10px;
+// `;
 
-const Input = styled.input`
-  outline: none;
-  border : none;
-  width : 100%;
-  font-size : 16px;
-`;
+// const Input = styled.input`
+//   outline: none;
+//   border : none;
+//   width : 100%;
+//   font-size : 16px;
+// `;
 
-const StyledImage = styled.img`
-  max-width: 200px;
-`;
+// const StyledImage = styled.img`
+//   max-width: 15vh;
+// `;
 
 type onChangeFunction = (e: React.FormEvent<HTMLInputElement>) => void;
 
@@ -51,10 +58,18 @@ type Props = {
     onChange : onChangeFunction,
 }
 
+
+
 function Chat ({ chatList, chatList2, onChange } : Props) {
   return (
-    <MainChatContainer>
-      <StyledImage src={ChatBot}/>
+    //maincontainer
+    <Box
+      display="flex"
+      alignItems="center"
+      flexDirection="column"
+    >
+      {/* mainchatbotcontainer */}
+      {/* <StyledImage src={ChatBot}/> */}
       <MainContainer>
         <StyledChatContainer>
           {chatList.map((
@@ -78,13 +93,19 @@ function Chat ({ chatList, chatList2, onChange } : Props) {
             />
           ))}
         </StyledChatContainer>
-        <InputContainer style={{ display: 'flex', justifyContent: 'space-between' }}>
+        {/* <InputContainer style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Input
             onChange={onChange}
           />
-        </InputContainer>
+        </InputContainer> */}
+        <TextField
+          id="outlined-name"
+          label="오늘의 이야기"
+          // onChange={onChange}
+          variant="outlined"
+        />
       </MainContainer>
-    </MainChatContainer>
+    </Box>
   );
 }
 

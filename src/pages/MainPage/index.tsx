@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import { BackGround } from './styles';
 import {
   Button,
   Grid,
@@ -43,29 +44,28 @@ function Main () {
 
 function MainPageContainer () {
   return (
-    <Box mt={10}>
-      <Grid
-        container
-        spacing={3}
-        justify="center"
-        alignItems="stretch"
-      >
-        <Grid item xs={2}>
-          {/* <Paper>
-            <Typography>
-              emotion log
-            </Typography>
-          </Paper> */}
-        </Grid>
-        <Grid item xs={7}>
-          <Paper elevation={0}>
+    <BackGround>
+      <Box mt={10}>
+        <Grid
+          container
+          spacing={3}
+          justify="center"
+          alignItems="stretch"
+        >
+          <Grid item xs={2}>
+            {/* <Paper>
+              <Typography>
+                emotion log
+              </Typography>
+            </Paper> */}
+          </Grid>
+          <Grid item xs={7}>
             <Typography>
               <MainPage/>
             </Typography>
-          </Paper>
-        </Grid>
-        <Grid item xs={2}>
-          <Box mt={25}>
+          </Grid>
+          <Grid item xs={2}>
+            {/* <Box mt={25}> */}
             <Grid
               container
               spacing={1}
@@ -90,7 +90,9 @@ function MainPageContainer () {
                   style={{
                     fontStyle: "italic",
                     fontWeight: "bold",
-                  }}>
+                    color: "#FFFFFF",
+                  }}
+                >
                   EMOTION CHECK
                 </Typography>
               </Grid>
@@ -107,10 +109,11 @@ function MainPageContainer () {
                 <Alert icon={false} severity="success">오늘 기쁜 일이 있었군요</Alert>
               </Grid>
             </Grid>
-          </Box>
+            {/* </Box> */}
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </BackGround>
   );
 }
 
