@@ -72,7 +72,7 @@ function Chat ({ message: messageInput, messages, onChange, onKeyUp } : Props) {
         </StyledChatContainer>
         <InputContainer style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Input
-            value={messageInput.content}
+            value={messageInput?.content}
             onChange={onChange}
             onKeyUp={onKeyUp}
           />

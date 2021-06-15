@@ -6,16 +6,26 @@ import {
   useSubscription,
   useMutation,
   gql,
+  useQuery,
 } from "@apollo/client";
+
 // subscription 사용 gql
+const SUBSCRIBE_MESSAGES = gql`
+  subscription messageAdded($postId: ID!) {
+    messageAdded(postId: $postId) {
+      id
+      content
+      role
+    }
+  }
+`;
+
 const GET_MESSAGES = gql`
-  subscription subscribe {
-    subscribeMessage {
-      messages {
-        id
-        content
-        role
-      }
+  query getMessages($userId: ID!) {
+    getMessages(userId: $userId) {
+      id
+      content
+      role
     }
   }
 `;
@@ -23,24 +33,29 @@ const GET_MESSAGES = gql`
 // post message mutation query ( role ,content )
 const POST_MESSAGE = gql`
   mutation($role: String!, $content: String!) {
-    postMessage(role: $role, content: $content) {
+    postMessage(postMessageData : { role : $role, content : $content }) {
       id
+      content
+      role
     }
   }
 `;
 
 // Business Logic container
 function ChatContainer () {
-  const { data, loading, error } = useSubscription(GET_MESSAGES);
+  const { data, loading, error } = useSubscription(SUBSCRIBE_MESSAGES, {
+    variables: { postId: 1 },
+  });
+
+  const { data: messagesData, loading: messagesLoading, refetch } = useQuery(GET_MESSAGES, { variables: { userId: 1 } });
+
   const [message, setMessage] = useState({
     role: "user",
     content: "",
   });
 
-  const [messages] = useState(data ? data : []);
-
   // use Mutation
-  const [postMessage] = useMutation(POST_MESSAGE);
+  const [postMessage, { data: postData, error: postError }] = useMutation(POST_MESSAGE);
 
   const onSend = () => {
     if (message.content.length > 0) {
@@ -48,6 +63,7 @@ function ChatContainer () {
         variables: message,
       });
     }
+    refetch();
     setMessage({
       ...message,
       content: "",
@@ -67,17 +83,16 @@ function ChatContainer () {
     }
   }
 
-  if (!loading) {
+  if (!messagesLoading) {
     return (
       <Chat
         message={message}
-        messages={messages}
+        messages={messagesData?.getMessages}
         onChange={handleChange}
         onKeyUp={handleOnKeyUp}
       />
     );
   }
-
   return null;
 }
 
