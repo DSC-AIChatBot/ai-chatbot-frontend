@@ -5,6 +5,15 @@ import moment from 'moment';
 import { List, Grid, Button } from '@material-ui/core';
 import './styles.css';
 import TouchComponent from './touchComponent';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display : flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+`;
+
 function FeelSchedule () {
   const classes = useStyles();
   const [getMoment, setMoment] = useState<string>(moment().format('YYYYMMDD'));
@@ -112,45 +121,48 @@ function FeelSchedule () {
   };
   console.log(result.length);
   return (
-    <div className="App" style={{ display: 'flex',
-      flexDirection: 'column', alignSelf: 'center', justifyContent: 'center',
-      backgroundColor: 'rgb(150,200,180)', borderRadius: 100 }}>
-      <Grid style={{ padding: 20 }}>
-        <div className="control" style={{ display: 'flex',
-          flexDirection: 'row', justifyContent: 'center',
-        }}>
-          <button onClick={() => {
-            setMoment(moment(getMoment).subtract(1, 'month').format('YYYY-MM-DD'))
-            ;
-            console.log(getMoment);
-          }}className='triangle test_3'></button>
-          <span style={{ fontSize: 48 }}>{moment(getMoment).format('YYYY 년 MM 월')}</span>
-          <button onClick={() => {
-            setMoment(moment(getMoment).add(1, 'month').format('YYYY-MM-DD'))
-            ;
-            console.log(getMoment);
-          }}className='triangle test_4'></button>
+    <Container>
 
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',
+      <div className="App" style={{ display: 'flex',
+        flexDirection: 'column', alignSelf: 'center', justifyContent: 'center',
+        backgroundColor: 'rgb(150,200,180)', borderRadius: 100 }}>
+        <Grid style={{ padding: 20 }}>
+          <div className="control" style={{ display: 'flex',
+            flexDirection: 'row', justifyContent: 'center',
+          }}>
+            <button onClick={() => {
+              setMoment(moment(getMoment).subtract(1, 'month').format('YYYY-MM-DD'))
+              ;
+              console.log(getMoment);
+            }}className='triangle test_3'></button>
+            <span style={{ fontSize: 48 }}>{moment(getMoment).format('YYYY 년 MM 월')}</span>
+            <button onClick={() => {
+              setMoment(moment(getMoment).add(1, 'month').format('YYYY-MM-DD'))
+              ;
+              console.log(getMoment);
+            }}className='triangle test_4'></button>
 
-        }}>
-          <Grid style={{ marginTop: 20, borderRadius: 80, backgroundColor: 'rgb(150,220,120)' }}>
-            <List style={{ justifyContent: 'center', display: 'flex', flexDirection: 'row' }}>
-              {dayList()}
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',
 
-            </List>
-            <Grid className={classes.calendar}>{calendar()}</Grid>
-          </Grid>
-          {/* <table style={{ height: 700, width: 1100 }} > */}
+          }}>
+            <Grid style={{ marginTop: 20, borderRadius: 80, backgroundColor: 'rgb(150,220,120)' }}>
+              <List style={{ justifyContent: 'center', display: 'flex', flexDirection: 'row' }}>
+                {dayList()}
 
-          {/* </table> */}
-        </div>
-      </Grid>
-      <TouchComponent open={modalOpen} close={closeModal} header="이날의 감정 기록"
-        setEmotion={setEmotion}>
-      </TouchComponent>
-    </div>
+              </List>
+              <Grid className={classes.calendar}>{calendar()}</Grid>
+            </Grid>
+            {/* <table style={{ height: 700, width: 1100 }} > */}
+
+            {/* </table> */}
+          </div>
+        </Grid>
+        <TouchComponent open={modalOpen} close={closeModal} header="이날의 감정 기록"
+          setEmotion={setEmotion}>
+        </TouchComponent>
+      </div>
+    </Container>
   );
 }
 export default FeelSchedule;
