@@ -5,6 +5,7 @@ import styled from 'styled-components';
 // import ChatBot from './ChatBot.jpg';
 import {
   Box,
+  Paper,
 } from '@material-ui/core';
 // import { makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -99,10 +100,14 @@ function Chat ({ chatList, chatList2, onChange } : Props) {
           />
         </InputContainer> */}
         <TextField
-          id="outlined-name"
+          id="filled-size-normal"
           label="오늘의 이야기"
           // onChange={onChange}
-          variant="outlined"
+          variant="filled"
+          style={{
+            backgroundColor: "rgba(232,244,253,0.3)",
+            borderRadius: 5,
+          }}
         />
       </MainContainer>
     </Box>

@@ -52,7 +52,7 @@ const MessageContainer = styled.div`
   padding : 10px;
   padding-top : 5px;
   padding-bottom : 7px;
-  border-radius : 20px;
+  border-radius : 5px;
   background-color :  ${(props : MessageContainerProps) => props.backgroundColor};
 `;
 
