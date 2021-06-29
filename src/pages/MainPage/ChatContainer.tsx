@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Chat from './Chat';
 
@@ -8,6 +8,7 @@ import {
   gql,
   useQuery,
 } from "@apollo/client";
+import UserContext from '../../utils/contexts/userContext';
 
 // subscription 사용 gql
 const SUBSCRIBE_MESSAGES = gql`
@@ -43,7 +44,7 @@ const POST_MESSAGE = gql`
 
 // Business Logic container
 function ChatContainer () {
-  // const { user } = useContext();
+  const { user } = useContext(UserContext);
   const { data, loading, error } = useSubscription(SUBSCRIBE_MESSAGES, {
     variables: { postId: 1 },
   });
@@ -51,7 +52,7 @@ function ChatContainer () {
   const { data: messagesData, loading: messagesLoading, refetch } = useQuery(GET_MESSAGES, { variables: { userId: user.id } });
 
   const [message, setMessage] = useState({
-    // userId : user.id,
+    userId: user.id,
     role: "user",
     content: "",
   });

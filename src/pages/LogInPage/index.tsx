@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Grid, Fade, Typography, TextField, IconButton } from '@material-ui/core';
+import { Button, Grid, Fade,
+  Typography, TextField, IconButton, FormControlLabel, Switch,
+} from '@material-ui/core';
 
 import LoginPageBackgroundImage from '../../assets/login-page/login-page-background.jpeg';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
@@ -8,6 +10,7 @@ import {
   useStyles,
 } from './styles';
 import useEventTargetValue from '../../utils/hooks/useEventTargetValue';
+
 
 function LoginPage():JSX.Element {
   const classes = useStyles();
@@ -39,6 +42,7 @@ function LoginPage():JSX.Element {
               }}
             />
           </Grid>
+
           <Grid
             item
             container
@@ -78,7 +82,7 @@ function LoginPage():JSX.Element {
               item
               container
               style={{
-                marginBottom: 48,
+                marginBottom: 8,
                 width: 250,
               }}>
 
@@ -101,7 +105,9 @@ function LoginPage():JSX.Element {
               </IconButton>
             </Grid>
 
-            <Button variant="contained" component="button" className={classes.kakaoLogin}>
+            <Button variant="contained" component="button" className={classes.kakaoLogin}
+              href="http://localhost:5000/auth/login/kakao"
+            >
               <Typography
                 style={{
                 }}
@@ -109,6 +115,7 @@ function LoginPage():JSX.Element {
                 카카오 로그인
               </Typography>
             </Button>
+
             <Button variant="contained" component="button" className={classes.naverLogin}
               href="http://localhost:5000/auth/login/naver"
             >
@@ -119,6 +126,7 @@ function LoginPage():JSX.Element {
                 네이버 로그인
               </Typography>
             </Button>
+
             <Button
               variant="contained"
               component="button"
