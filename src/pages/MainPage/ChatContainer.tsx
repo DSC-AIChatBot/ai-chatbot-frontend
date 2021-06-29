@@ -43,6 +43,7 @@ const POST_MESSAGE = gql`
 
 // Business Logic container
 function ChatContainer () {
+  // const { user } = useContext();
   const { data, loading, error } = useSubscription(SUBSCRIBE_MESSAGES, {
     variables: { postId: 1 },
   });
@@ -50,6 +51,7 @@ function ChatContainer () {
   const { data: messagesData, loading: messagesLoading, refetch } = useQuery(GET_MESSAGES, { variables: { userId: 1 } });
 
   const [message, setMessage] = useState({
+    // userId : user.id,
     role: "user",
     content: "",
   });
