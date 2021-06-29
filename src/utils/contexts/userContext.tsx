@@ -1,5 +1,4 @@
 import React from 'react';
-
 export interface UserContextValue {
   // user: UserInfo;
   // handleProfile: () => void;
@@ -30,7 +29,6 @@ const UserContext = React.createContext<UserContextValue>({
 
 export function useUser(): UserContextValue {
   const [user, setUser] = React.useState<any>(defaultUser);
-
 
   return {
     user,
