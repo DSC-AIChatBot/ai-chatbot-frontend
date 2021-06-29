@@ -10,20 +10,42 @@ import FeelCalendar from './pages/FeelCalendarPage';
 import SignUp from './pages/SignUpPage';
 import NotFound from './pages/NotFoundPage';
 import ApiTestPage from './pages/ApiTestPage';
+import { configure } from 'axios-hooks';
+import axios from './utils/axios';
+import UserContext, { useUser } from './utils/contexts/userContext';
 
 function App() {
+  configure({ axios: axios.axiosInstance });
+
+  const {
+    user, status,
+  } = useUser();
+
   return (
-    <Switch>
-      <Route exact path="/" component={Main}/>
-      <Route path="/logIn" component={LogIn}/>
-      <Route path="/signUp" component={SignUp}/>
-      <Route path="/recordFeelSchedule" component={FeelCalendar}/>
-      <Route path="/consultCheckList" component={Consulting}/>
-      <Route path="/counselingCenterConnect" component={CounselingConnect}/>
-      <Route path="/notfound" component={NotFound}/>
-      {/* API Test Page */}
-      <Route path="/test" component={ApiTestPage}/>
-    </Switch>
+    <UserContext.Provider
+      value={{
+        user,
+        status,
+      }}
+    >
+      {status ? (
+        <Switch>
+          {/* 로그인 상태인 경우 */}
+          <Route exact path="/" component={Main}/>
+          <Route path="/signUp" component={SignUp}/>
+          <Route path="/recordFeelSchedule" component={FeelCalendar}/>
+          <Route path="/consultCheckList" component={Consulting}/>
+          <Route path="/counselingCenterConnect" component={CounselingConnect}/>
+          <Route path="/notfound" component={NotFound}/>
+          <Route path="/test" component={ApiTestPage}/>
+        </Switch>) : (
+        <Switch>
+          {/* 로그아웃 상태인 경우 */}
+          <Route path="/" component={LogIn}/>
+        </Switch>
+      )}
+
+    </UserContext.Provider>
   );
 }
 

@@ -8,7 +8,7 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 
 // Apollo-client Pub-Sub Settings
 const link = new WebSocketLink({
-  uri: `ws://localhost:5000/`,
+  uri: `ws://localhost:5000/graphql`,
   options: {
     reconnect: true,
   },
@@ -16,10 +16,9 @@ const link = new WebSocketLink({
 
 const client = new ApolloClient({
   link,
-  uri: "http://localhost:5000/",
+  uri: "http://localhost:5000/graphql",
   cache: new InMemoryCache(),
 });
-
 
 ReactDOM.render(
   <BrowserRouter>

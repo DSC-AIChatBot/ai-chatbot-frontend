@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, Fade, Typography, TextField, IconButton } from '@material-ui/core';
+import { Button, Grid, Fade, Typography, TextField, IconButton, FormControlLabel, Switch, } from '@material-ui/core';
 
 import LoginPageBackgroundImage from '../../assets/login-page/login-page-background.jpeg';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
@@ -21,7 +21,7 @@ function LoginPage():JSX.Element {
       <Grid
         container
         alignItems="center"
-        justify="center"
+        justify="center"                                          
         className={classes.container}
       >
         <Grid container direction="row">
@@ -100,11 +100,11 @@ function LoginPage():JSX.Element {
                 <VpnKeyIcon/>
               </IconButton>
             </Grid>
-            <Button variant="contained" component="button">
+            {/* <Button variant="contained" component="button">
               <Typography>
                 카카오 로그인
               </Typography>
-            </Button>
+            </Button> */}
             <Button variant="contained" component="button" className={classes.kakaoLogin}>
               <Typography
                 style={{

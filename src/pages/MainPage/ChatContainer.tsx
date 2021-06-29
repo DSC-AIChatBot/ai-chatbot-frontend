@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Chat from './Chat';
 
@@ -6,52 +6,97 @@ import {
   useSubscription,
   useMutation,
   gql,
+  useQuery,
 } from "@apollo/client";
+import UserContext from '../../utils/contexts/userContext';
 
-const GET_MESSAGES = gql`
-  subscription {
-    messages {
+// subscription 사용 gql
+const SUBSCRIBE_MESSAGES = gql`
+  subscription messageAdded($postId: ID!) {
+    messageAdded(postId: $postId) {
       id
       content
-      user
+      role
     }
   }
 `;
 
+const GET_MESSAGES = gql`
+  query getMessages($userId: String!) {
+    getMessages(userId: $userId) {
+      id
+      content
+      role
+    }
+  }
+`;
+
+// post message mutation query ( role ,content )
 const POST_MESSAGE = gql`
-  mutation($user: String!, $content: String!) {
-    postMessage(user: $user, content: $content)
+  mutation($role: String!, $content: String!) {
+    postMessage(postMessageData : { userId: $userId, role : $role, content : $content }) {
+      id
+      content
+      role
+    }
   }
 `;
 
 // Business Logic container
 function ChatContainer () {
-  const { data } = useSubscription(GET_MESSAGES);
-  const [message, setMessage] = useState("안녕하세요!");
+  const { user } = useContext(UserContext);
+  const { data, loading, error } = useSubscription(SUBSCRIBE_MESSAGES, {
+    variables: { postId: 1 },
+  });
 
-  const [chatList, setChatList] = useState([
-    { role: "guest", text: "안녕" },
-    { role: "chatbot", text: "나는" },
-    { role: "guest", text: "게스트" },
-  ]);
+  const { data: messagesData, loading: messagesLoading, refetch } = useQuery(GET_MESSAGES, { variables: { userId: user.id } });
 
-  const [chatList2, setChatList2] = useState([
-    { role: "chatbot", text: "안녕" },
-    { role: "guest", text: "나는" },
-    { role: "chatbot", text: "로봇" },
-  ]);
+  const [message, setMessage] = useState({
+    userId: user.id,
+    role: "user",
+    content: "",
+  });
 
-  function handleChange(e : React.FormEvent<HTMLInputElement>) {
-    setMessage(e.currentTarget.value);
+  // use Mutation
+  const [postMessage, { data: postData, error: postError }] = useMutation(POST_MESSAGE);
+
+  const onSend = () => {
+    if (message.content.length > 0) {
+      postMessage({
+        variables: message,
+      });
+    }
+    refetch();
+    setMessage({
+      ...message,
+      content: "",
+    });
+  };
+
+  function handleChange(e : { target: HTMLInputElement }) {
+    setMessage({
+      ...message,
+      content: e.target.value,
+    });
   }
 
-  return (
-    <Chat
-      chatList={chatList}
-      chatList2={chatList2}
-      onChange={handleChange}
-    />
-  );
+  function handleOnKeyUp (e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.code === "Enter") {
+      onSend();
+    }
+  }
+
+  if (!messagesLoading) {
+    return (
+      <Chat
+        message={message}
+        messages={messagesData?.getMessages}
+        onChange={handleChange}
+        onKeyUp={handleOnKeyUp}
+      />
+    );
+  }
+  return null;
 }
 
 export default ChatContainer;

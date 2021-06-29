@@ -4,7 +4,7 @@ import styled from 'styled-components';
 type Props = {
     role : string,
     image : string,
-    text : string
+    content : string
 }
 
 type StyledContainerProps = {
@@ -93,7 +93,7 @@ const BubbleStyledPath = styled.path`
   fill : ${(props : BubbleStyledPathProps) => props.fill};
 `;
 
-function ChatMessage({ role, image, text } : Props) {
+function ChatMessage({ role, image, content } : Props) {
 
   if (role === "guest") {
     return (
@@ -103,7 +103,7 @@ function ChatMessage({ role, image, text } : Props) {
         right="20"
       >
         <MessageContainer
-          backgroundColor="#f1eae2"
+          backgroundColor="#D5919D"
         >
           {
             image
@@ -116,12 +116,12 @@ function ChatMessage({ role, image, text } : Props) {
               : null
           }
           {
-            text
+            content
               ? (
                 <MessageText
-                  color="#000"
+                  color="#fff"
                 >
-                  {text}
+                  {content}
                 </MessageText>
               )
               : null
@@ -136,7 +136,7 @@ function ChatMessage({ role, image, text } : Props) {
               enableBackground="new 32.485 17.5 15.515 17.5"
             >
               <BubbleStyledPath
-                fill="#f1eae2"
+                fill="#D5919D"
                 d={'M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z'}
                 x="0"
                 y="0"
@@ -154,7 +154,7 @@ function ChatMessage({ role, image, text } : Props) {
       right="0"
     >
       <MessageContainer
-        backgroundColor="#eaa786"
+        backgroundColor="#535063"
       >
         {
           image
@@ -167,12 +167,12 @@ function ChatMessage({ role, image, text } : Props) {
             : null
         }
         {
-          text
+          content
             ? (
               <MessageText
                 color="#FFF"
               >
-                {text}
+                {content}
               </MessageText>
             )
             : null
@@ -188,7 +188,7 @@ function ChatMessage({ role, image, text } : Props) {
           >
             <BubbleStyledPath
               d={'M38.484,17.5c0,8.75,1,13.5-6,17.5C51.484,35,52.484,17.5,38.484,17.5z'}
-              fill="#eaa786"
+              fill="#535063"
               x="0"
               y="0"
             />
