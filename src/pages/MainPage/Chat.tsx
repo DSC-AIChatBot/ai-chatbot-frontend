@@ -62,7 +62,7 @@ function Chat ({ message: messageInput, messages, onChange, onKeyUp } : Props) {
     <MainChatContainer>
       <MainContainer>
         <StyledChatContainer>
-          {messages.map((
+          {messages && messages.map((
             { role, content } : { role : string, content : string}, index : number,
           ) => (
             <ChatMessage
