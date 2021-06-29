@@ -33,7 +33,7 @@ const GET_MESSAGES = gql`
 // post message mutation query ( role ,content )
 const POST_MESSAGE = gql`
   mutation($role: String!, $content: String!) {
-    postMessage(postMessageData : { role : $role, content : $content }) {
+    postMessage(postMessageData : { userId: $userId, role : $role, content : $content }) {
       id
       content
       role
