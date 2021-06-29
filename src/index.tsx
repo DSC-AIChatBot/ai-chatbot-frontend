@@ -4,12 +4,30 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import { StylesProvider } from '@material-ui/core';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { WebSocketLink } from '@apollo/client/link/ws';
+
+// Apollo-client Pub-Sub Settings
+const link = new WebSocketLink({
+  uri: `ws://localhost:5000/graphql`,
+  options: {
+    reconnect: true,
+  },
+});
+
+const client = new ApolloClient({
+  link,
+  uri: "http://localhost:5000/graphql",
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
   <BrowserRouter>
-    <StylesProvider injectFirst>
-      <App />
-    </StylesProvider>
+    <ApolloProvider client={client}>
+      <StylesProvider injectFirst>
+        <App />
+      </StylesProvider>
+    </ApolloProvider>
     <GlobalStyle />
   </BrowserRouter>,
   document.getElementById('root'),

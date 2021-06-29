@@ -17,7 +17,7 @@ function App() {
       <Route exact path="/" component={Main}/>
       <Route path="/logIn" component={LogIn}/>
       <Route path="/signUp" component={SignUp}/>
-      <Route path="/recordFeelSchedule" component={FeelCalendar}/>
+      <Route path="/emotion-Calendar" component={FeelCalendar}/>
       <Route path="/consultCheckList" component={Consulting}/>
       <Route path="/counselingCenterConnect" component={CounselingConnect}/>
       <Route path="/notfound" component={NotFound}/>
