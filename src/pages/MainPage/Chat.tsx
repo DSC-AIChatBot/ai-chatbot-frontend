@@ -58,6 +58,8 @@ type Props = {
 }
 
 function Chat ({ message: messageInput, messages, onChange, onKeyUp } : Props) {
+
+  console.log('message : ', messageInput, messages);
   return (
     <MainChatContainer>
       <MainContainer>

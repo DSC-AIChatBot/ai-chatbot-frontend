@@ -33,7 +33,7 @@ const GET_MESSAGES = gql`
 
 // post message mutation query ( role ,content )
 const POST_MESSAGE = gql`
-  mutation($role: String!, $content: String!) {
+  mutation($userId: String!, $role: String!, $content: String!) {
     postMessage(postMessageData : { userId: $userId, role : $role, content : $content }) {
       id
       content
@@ -49,7 +49,8 @@ function ChatContainer () {
     variables: { postId: 1 },
   });
 
-  const { data: messagesData, loading: messagesLoading, refetch } = useQuery(GET_MESSAGES, { variables: { userId: user.id } });
+  const { data: messagesData, loading: messagesLoading, refetch, error: getError } = useQuery(GET_MESSAGES, { variables: { userId: user.id } });
+
 
   const [message, setMessage] = useState({
     userId: user.id,
@@ -59,6 +60,9 @@ function ChatContainer () {
 
   // use Mutation
   const [postMessage, { data: postData, error: postError }] = useMutation(POST_MESSAGE);
+
+  console.log('get error!!!!!!!!', messagesData);
+  console.log('post error!!!!!!!!', postData);
 
   const onSend = () => {
     if (message.content.length > 0) {
@@ -91,6 +95,7 @@ function ChatContainer () {
       <Chat
         message={message}
         messages={messagesData?.getMessages}
+        // messages={postData?.content}
         onChange={handleChange}
         onKeyUp={handleOnKeyUp}
       />

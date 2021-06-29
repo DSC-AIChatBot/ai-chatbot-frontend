@@ -21,6 +21,8 @@ function App() {
     user, status,
   } = useUser();
 
+  console.log(user, status);
+
   return (
     <UserContext.Provider
       value={{
