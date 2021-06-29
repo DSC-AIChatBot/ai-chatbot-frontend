@@ -21,7 +21,7 @@ const SUBSCRIBE_MESSAGES = gql`
 `;
 
 const GET_MESSAGES = gql`
-  query getMessages($userId: ID!) {
+  query getMessages($userId: String!) {
     getMessages(userId: $userId) {
       id
       content
@@ -48,7 +48,7 @@ function ChatContainer () {
     variables: { postId: 1 },
   });
 
-  const { data: messagesData, loading: messagesLoading, refetch } = useQuery(GET_MESSAGES, { variables: { userId: 1 } });
+  const { data: messagesData, loading: messagesLoading, refetch } = useQuery(GET_MESSAGES, { variables: { userId: user.id } });
 
   const [message, setMessage] = useState({
     // userId : user.id,
