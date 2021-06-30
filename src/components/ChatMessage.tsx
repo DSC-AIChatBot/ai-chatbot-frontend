@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
 type Props = {
@@ -94,6 +96,17 @@ const BubbleStyledPath = styled.path`
 `;
 
 function ChatMessage({ role, image, content } : Props) {
+  const messagesRef = useRef<HTMLHeadingElement>(null);
+
+  const scrollToBottom = useCallback(() => {
+    if (messagesRef.current) {
+      messagesRef.current.scrollIntoView();
+    }
+  }, [messagesRef]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, []);
 
   if (role === "guest") {
     return (
@@ -101,6 +114,7 @@ function ChatMessage({ role, image, content } : Props) {
         align="flex-end"
         left="0"
         right="20"
+        ref={messagesRef}
       >
         <MessageContainer
           backgroundColor="#D5919D"
@@ -152,6 +166,7 @@ function ChatMessage({ role, image, content } : Props) {
       align="flex-start"
       left="20"
       right="0"
+      ref={messagesRef}
     >
       <MessageContainer
         backgroundColor="#535063"

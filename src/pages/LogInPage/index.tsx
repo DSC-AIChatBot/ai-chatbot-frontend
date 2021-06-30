@@ -5,12 +5,15 @@ import { Button, Grid, Fade,
 
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import LoginLayout from '../../layouts/LoginLayout';
+import forest from './forest.png';
 
 const LoginBodyContainer = styled.div`
+  background : url(${forest}) center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+
 `;
 
 const Container = styled.div`

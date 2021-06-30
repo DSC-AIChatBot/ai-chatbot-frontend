@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import ChatMessage from '../../components/ChatMessage';
 import styled from 'styled-components/macro';
+import { useEffect } from 'react';
 
 const MainChatContainer = styled.div`
   display : flex;
@@ -26,6 +27,11 @@ const MainContainer = styled.div`
 const StyledChatContainer = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-y : auto;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar{ 
+    display:none; 
+  }
 `;
 
 const InputContainer = styled.div`
@@ -59,13 +65,14 @@ type Props = {
 
 function Chat ({ message: messageInput, messages, onChange, onKeyUp } : Props) {
 
-  console.log('message : ', messageInput, messages);
+
   return (
     <MainChatContainer>
       <MainContainer>
-        <StyledChatContainer>
+        <StyledChatContainer
+        >
           {messages && messages.map((
-            { role, content } : { role : string, content : string}, index : number,
+            { role, content } : { role : string, content : string }, index : number,
           ) => (
             <ChatMessage
               key={index}

@@ -9,6 +9,7 @@ import {
   useQuery,
 } from "@apollo/client";
 import UserContext from '../../utils/contexts/userContext';
+import { useEffect } from 'react';
 
 // subscription 사용 gql
 const SUBSCRIBE_MESSAGES = gql`
@@ -41,7 +42,6 @@ const POST_MESSAGE = gql`
     }
   }
 `;
-
 // Business Logic container
 function ChatContainer () {
   const { user } = useContext(UserContext);
@@ -51,17 +51,27 @@ function ChatContainer () {
 
   const { data: messagesData, loading: messagesLoading, refetch, error: getError } = useQuery(GET_MESSAGES, { variables: { userId: user.id } });
 
+  const [messages, setMessages] = useState<{role :string, content:string}[]>([]);
+
+  useEffect(() => {
+    if (messagesData) {
+      setMessages([...messagesData.getMessages]);
+    }
+  }, [messagesData]);
+
+  useEffect(() => {
+    if (data) {
+      setMessages([...messages, data.messageAdded]);
+    }
+  }, [data]);
+
   const [message, setMessage] = useState({
     userId: user.id,
     role: "user",
     content: "",
   });
-
   // use Mutation
   const [postMessage, { data: postData, error: postError }] = useMutation(POST_MESSAGE);
-
-  console.log('get error!!!!!!!!', messagesData, getError);
-  console.log('post error!!!!!!!!', postData);
 
   const onSend = () => {
     if (message.content.length > 0) {
@@ -69,11 +79,12 @@ function ChatContainer () {
         variables: message,
       });
     }
-    refetch();
     setMessage({
       ...message,
       content: "",
     });
+
+    refetch();
   };
 
   function handleChange(e : { target: HTMLInputElement }) {
@@ -89,14 +100,11 @@ function ChatContainer () {
     }
   }
 
-  console.log('aaaaaaaa', messagesData);
-
   if (!messagesLoading) {
     return (
       <Chat
         message={message}
-        messages={messagesData?.getMessages}
-        // messages={postData?.content}
+        messages={messages}
         onChange={handleChange}
         onKeyUp={handleOnKeyUp}
       />
