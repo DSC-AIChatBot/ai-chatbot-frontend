@@ -54,7 +54,7 @@ function LoginPage():JSX.Element {
               justify="center"
               className={classes.loginContainer}
             >
-              <img src={ChatBot} alt="챗봇 이미지" width={250} height={250}/>
+              <img src={ChatBot} alt="챗봇 이미지" width={250} height={250} style={{ marginBottom: 16 }}/>
               <Button variant="contained" component="button" className={classes.kakaoLogin}
                 href="http://localhost:5000/auth/login/kakao"
               >
