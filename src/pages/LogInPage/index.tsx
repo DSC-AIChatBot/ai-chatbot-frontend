@@ -3,14 +3,36 @@ import { Button, Grid, Fade,
   Typography, TextField, IconButton, FormControlLabel, Switch,
 } from '@material-ui/core';
 
-import LoginPageBackgroundImage from '../../assets/login-page/login-page-background.jpeg';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import LoginLayout from '../../layouts/LoginLayout';
+
+const LoginBodyContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border : 1px solid #484363;
+  background-color: #484363;
+  opacity : 0.85;
+  border-radius : 10px;
+  padding : 5%;
+  width : 50vw;
+  height : 50vh;
+  justify-content : space-between;
+`;
 
 import {
   useStyles,
 } from './styles';
 import useEventTargetValue from '../../utils/hooks/useEventTargetValue';
-
+import styled from 'styled-components';
+import ChatBot from './chatbot.png';
 
 function LoginPage():JSX.Element {
   const classes = useStyles();
@@ -18,132 +40,61 @@ function LoginPage():JSX.Element {
   const pw = useEventTargetValue('');
 
   return (
-    <Fade in timeout={
-      { enter: 2000 }
-    }>
-      <Grid
-        container
-        alignItems="center"
-        justify="center"
-        className={classes.container}
-      >
-        <Grid container direction="row">
-          <Grid
-            item
-            container
-            className={classes.imageContainer}
-          >
-            <img
-              src={LoginPageBackgroundImage}
-              alt="door image"
-              style={{
-                width: '100%',
-                height: '100%',
-              }}
-            />
-          </Grid>
-
-          <Grid
-            item
-            container
-            direction="column"
-            alignItems="center"
-            justify="center"
-            className={classes.loginContainer}
-          >
-            <TextField
-              variant="outlined"
-              label="ID"
-              autoFocus
-              value={id.value}
-              onChange={id.handleChange}
-              style={{
-                width: 250,
-                marginTop: 48,
-              }}
-            />
-
-            <TextField
-              variant="outlined"
-              label="PW"
-              type="password"
-              value={pw.value}
-              onChange={pw.handleChange}
-              style={{
-                width: 250,
-                marginTop: 8,
-                marginBottom: 8,
-              }}
-            />
-
+    <LoginLayout>
+      <Fade in timeout={
+        { enter: 2000 }
+      }>
+        <LoginBodyContainer>
+          <Container>
             <Grid
-              justify="space-between"
-              alignItems="center"
               item
               container
-              style={{
-                marginBottom: 8,
-                width: 250,
-              }}>
-
-              <Button
-                style={{
-                  width: 'fit-content',
-                }}
+              direction="column"
+              alignItems="center"
+              justify="center"
+              className={classes.loginContainer}
+            >
+              <img src={ChatBot} alt="챗봇 이미지" width={250} height={250}/>
+              <Button variant="contained" component="button" className={classes.kakaoLogin}
+                href="http://localhost:5000/auth/login/kakao"
               >
-                <Typography variant="body1" style={{
-                  fontSize: 5,
-                }}>sign up</Typography>
+                <Typography
+                  style={{
+                  }}
+                >
+                카카오 로그인
+                </Typography>
               </Button>
 
-              <IconButton
-                onClick={() => {
-                  console.log(id.value, pw.value);
-                }}
+              <Button variant="contained" component="button" className={classes.naverLogin}
+                href="http://localhost:5000/auth/login/naver"
               >
-                <VpnKeyIcon/>
-              </IconButton>
-            </Grid>
-
-            <Button variant="contained" component="button" className={classes.kakaoLogin}
-              href="http://localhost:5000/auth/login/kakao"
-            >
-              <Typography
-                style={{
-                }}
-              >
-                카카오 로그인
-              </Typography>
-            </Button>
-
-            <Button variant="contained" component="button" className={classes.naverLogin}
-              href="http://localhost:5000/auth/login/naver"
-            >
-              <Typography
-                style={{
-                }}
-              >
+                <Typography
+                  style={{
+                  }}
+                >
                 네이버 로그인
-              </Typography>
-            </Button>
+                </Typography>
+              </Button>
 
-            <Button
-              variant="contained"
-              component="button"
-              className={classes.googleLogin}
-              href="http://localhost:5000/auth/login/google"
-            >
-              <Typography
-                style={{
-                }}
+              <Button
+                variant="contained"
+                component="button"
+                className={classes.googleLogin}
+                href="http://localhost:5000/auth/login/google"
               >
+                <Typography
+                  style={{
+                  }}
+                >
                 구글 로그인
-              </Typography>
-            </Button>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Fade>
+                </Typography>
+              </Button>
+            </Grid>
+          </Container>
+        </LoginBodyContainer>
+      </Fade>
+    </LoginLayout>
   );
 }
 

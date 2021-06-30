@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import Header from '../components/Header';
+import Header from '../pages/MainPage/components/Header';
 
 const Container = styled.div`
   display : flex;

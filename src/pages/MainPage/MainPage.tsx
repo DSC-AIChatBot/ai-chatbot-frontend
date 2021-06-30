@@ -1,6 +1,6 @@
 import React from 'react';
 import ChatContainer from './ChatContainer';
-import MainPageLayOut from './layouts/MainPageLayout';
+import MainPageLayOut from '../../layouts/LoginLayout';
 import styled from 'styled-components';
 
 const MainBodyContainer = styled.div`

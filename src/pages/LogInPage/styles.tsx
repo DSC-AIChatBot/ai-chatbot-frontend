@@ -18,8 +18,8 @@ export const useStyles = makeStyles((theme: Theme) => ({
   loginContainer: {
     width: 400,
     height: 700,
-    backgroundColor: 'white',
-    padding: 48,
+    backgroundColor: 'transparent',
+    padding: 24,
   },
   kakaoLogin: {
     backgroundColor: 'rgba(253, 216, 1, 0.6)',

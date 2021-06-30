@@ -1,5 +1,5 @@
 import useAxios from 'axios-hooks';
-import React from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 export interface UserContextValue {
   user: any;
   status: boolean;
@@ -15,26 +15,28 @@ export const defaultUser: any = {
   accountType: null,
 };
 
-const UserContext = React.createContext<UserContextValue>({
+const UserContext = createContext<UserContextValue>({
   user: defaultUser,
   status: false,
 });
 
 export function useUser(): UserContextValue {
-  const [user, setUser] = React.useState<any>(defaultUser);
-  const [status, setStatus] = React.useState<boolean>(false);
+  const [user, setUser] = useState<any>(defaultUser);
+  const [status, setStatus] = useState<boolean>(false);
 
-  const [, getUserProfile] = useAxios({
+  const [_, getUserProfile] = useAxios({
     method: 'GET',
     url: '/auth/profile',
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!user.id) {
       console.log('[UserContext] NULL - get Profile');
+      console.log(user);
       getUserProfile()
         .then((res) => {
           if (res.data) {
+            console.log(res.data);
             setUser(res.data);
             setStatus(true);
           }
