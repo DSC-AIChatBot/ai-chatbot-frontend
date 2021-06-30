@@ -51,7 +51,6 @@ function ChatContainer () {
 
   const { data: messagesData, loading: messagesLoading, refetch, error: getError } = useQuery(GET_MESSAGES, { variables: { userId: user.id } });
 
-
   const [message, setMessage] = useState({
     userId: user.id,
     role: "user",
@@ -61,7 +60,7 @@ function ChatContainer () {
   // use Mutation
   const [postMessage, { data: postData, error: postError }] = useMutation(POST_MESSAGE);
 
-  console.log('get error!!!!!!!!', messagesData);
+  console.log('get error!!!!!!!!', messagesData, getError);
   console.log('post error!!!!!!!!', postData);
 
   const onSend = () => {
@@ -89,6 +88,8 @@ function ChatContainer () {
       onSend();
     }
   }
+
+  console.log('aaaaaaaa', messagesData);
 
   if (!messagesLoading) {
     return (
